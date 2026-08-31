@@ -1,0 +1,10 @@
+.options {
+    font-weight: bold;
+    background-color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 30px;
+    padding: 22px;
+}
