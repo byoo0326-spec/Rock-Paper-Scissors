@@ -45,7 +45,7 @@ function playRound(computerchoice) {
 
 function computerChoice() {
     options = ["rock", "paper", "scissors"];
-    let option = Math.floor(Math.random() * 2);
+    let option = Math.floor(Math.random() * 3);
     return options[option];
 }
 
@@ -56,7 +56,7 @@ function PlayGame() {
     alert(`The score is 0 - 0!`)
     for (i = 0; i < rounds; i++) {
         playRound(computerChoice());
-        alert(`Round ${i}: The score is ${playerScore} - ${computerScore}!`)
+        alert(`Round ${i + 1}: The score is ${playerScore} - ${computerScore}!`)
     }
     alert(`The final score was ${playerScore} - ${computerScore}!`)
 }
