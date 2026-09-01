@@ -12,11 +12,10 @@
 const Game = document.querySelector("#Game");
 const playGame = Game.addEventListener("click", PlayGame);
 
-playerScore;
-computerScore;
+let playerScore = 0;
+let computerScore = 0;
 
-function playRound() {
-    let computerchoice = computerChoice();
+function playRound(computerchoice) {
     let choice = prompt("rock, paper, or scissors?")
     if (choice == "rock") {
         if (computerchoice == "paper") {
@@ -42,21 +41,25 @@ function playRound() {
             playerScore++
         }
     }
+}
 
-    function computerChoice() {
-        options = ["rock", "paper", "scissors"];
-        let option = 2 * Math.random;
-        return options[option];
-    }
+function computerChoice() {
+    options = ["rock", "paper", "scissors"];
+    let option = Math.floor(Math.random() * 2);
+    return options[option];
+}
 
-    function PlayGame() {
-        let rounds = prompt("How many rounds would you like to play?")
-        playerScore = 0;
-        computerScore = 0;
-        for (i = 0; i < rounds; i++) {
-            playRound();
-        }
+function PlayGame() {
+    let rounds = prompt("How many rounds would you like to play?")
+    playerScore = 0;
+    computerScore = 0;
+    alert(`The score is 0 - 0!`)
+    for (i = 0; i < rounds; i++) {
+        playRound(computerChoice());
+        alert(`Round ${i}: The score is ${playerScore} - ${computerScore}!`)
     }
+    alert(`The final score was ${playerScore} - ${computerScore}!`)
+}
 
 
 
