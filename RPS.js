@@ -14,15 +14,29 @@ const Rock = document.querySelector("#Rock");
 const Paper = document.querySelector("#Paper");
 const Scissors = document.querySelector("#Scissors");
 const playGame = Game.addEventListener("click", PlayGame);
-const SelectRock = Game.addEventListener("click", playRound);
-const SelectPaper = Game.addEventListener("click", playRound);
-const SelectScissors = Game.addEventListener("click", playRound);
+const SelectRock = Rock.addEventListener("click", (event) => {
+    playRound(event.id);
+});
+const SelectPaper = Paper.addEventListener("click", (event) => {
+    playRound(event.id);
+});
+const SelectScissors = Scissors.addEventListener("click", (event) => {
+    playRound(event.id);
+});
 
 let playerScore = 0;
 let computerScore = 0;
 
-function playRound(computerchoice) {
-    if (button.id == "rock") {
+function playRound(playerChoice) {
+    const computerchoice = computerChoice();
+    if (playerScore == rounds) {
+        alert(`You win!!! The final score was ${playerScore} - ${computerScore}!`);
+    }
+    else if (computerScore == rounds) {
+        alert(`You lose! The final score was ${playerScore} - ${computerScore}!`);
+    }
+
+    else if (playerChoice == "rock") {
         if (computerchoice == "paper") {
             computerScore++
         }
@@ -30,7 +44,7 @@ function playRound(computerchoice) {
             playerScore++
         }
     }
-    else if (button.id == "paper") {
+    else if (playerChoice == "paper") {
         if (computerchoice == "scissors") {
             computerScore++
         }
@@ -38,7 +52,7 @@ function playRound(computerchoice) {
             playerScore++
         }
     }
-    else {
+    else if (playerChoice == "scissors") {
         if (computerchoice == "rock") {
             computerScore++
         }
@@ -59,12 +73,6 @@ function PlayGame() {
     playerScore = 0;
     computerScore = 0;
     alert(`first to ${rounds} wins!`);
-    if (playerScore == rounds) {
-        alert(`You win!!! The final score was ${playerScore} - ${computerScore}!`);
-    }
-    else if (computerScore == rounds) {
-        alert(`You lose! The final score was ${playerScore} - ${computerScore}!`);
-    }
 }
 
 
