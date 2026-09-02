@@ -10,14 +10,19 @@
 //Scores update
 
 const Game = document.querySelector("#Game");
+const Rock = document.querySelector("#Rock");
+const Paper = document.querySelector("#Paper");
+const Scissors = document.querySelector("#Scissors");
 const playGame = Game.addEventListener("click", PlayGame);
+const SelectRock = Game.addEventListener("click", playRound);
+const SelectPaper = Game.addEventListener("click", playRound);
+const SelectScissors = Game.addEventListener("click", playRound);
 
 let playerScore = 0;
 let computerScore = 0;
 
 function playRound(computerchoice) {
-    let choice = prompt("rock, paper, or scissors?")
-    if (choice == "rock") {
+    if (button.id == "rock") {
         if (computerchoice == "paper") {
             computerScore++
         }
@@ -25,7 +30,7 @@ function playRound(computerchoice) {
             playerScore++
         }
     }
-    else if (choice == "paper") {
+    else if (button.id == "paper") {
         if (computerchoice == "scissors") {
             computerScore++
         }
@@ -50,15 +55,16 @@ function computerChoice() {
 }
 
 function PlayGame() {
-    let rounds = prompt("How many rounds would you like to play?")
+    let rounds = prompt("First to what?")
     playerScore = 0;
     computerScore = 0;
-    alert(`The score is 0 - 0!`)
-    for (i = 0; i < rounds; i++) {
-        playRound(computerChoice());
-        alert(`Round ${i + 1}: The score is ${playerScore} - ${computerScore}!`)
+    alert(`first to ${rounds} wins!`);
+    if (playerScore == rounds) {
+        alert(`You win!!! The final score was ${playerScore} - ${computerScore}!`);
     }
-    alert(`The final score was ${playerScore} - ${computerScore}!`)
+    else if (computerScore == rounds) {
+        alert(`You lose! The final score was ${playerScore} - ${computerScore}!`);
+    }
 }
 
 
