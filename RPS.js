@@ -13,54 +13,21 @@ const Game = document.querySelector("#Game");
 const Rock = document.querySelector("#Rock");
 const Paper = document.querySelector("#Paper");
 const Scissors = document.querySelector("#Scissors");
+const scoreBoard = document.querySelector(".scoreboard");
 const playGame = Game.addEventListener("click", PlayGame);
 const SelectRock = Rock.addEventListener("click", (event) => {
-    playRound(event.id);
+    playRound(event.currentTarget.id);
 });
 const SelectPaper = Paper.addEventListener("click", (event) => {
-    playRound(event.id);
+    playRound(event.currentTarget.id);
 });
 const SelectScissors = Scissors.addEventListener("click", (event) => {
-    playRound(event.id);
+    playRound(event.currentTarget.id);
 });
-
+8
+let rounds = 0;
 let playerScore = 0;
 let computerScore = 0;
-
-function playRound(playerChoice) {
-    const computerchoice = computerChoice();
-    if (playerScore == rounds) {
-        alert(`You win!!! The final score was ${playerScore} - ${computerScore}!`);
-    }
-    else if (computerScore == rounds) {
-        alert(`You lose! The final score was ${playerScore} - ${computerScore}!`);
-    }
-
-    else if (playerChoice == "rock") {
-        if (computerchoice == "paper") {
-            computerScore++
-        }
-        if (computerchoice == "scissors") {
-            playerScore++
-        }
-    }
-    else if (playerChoice == "paper") {
-        if (computerchoice == "scissors") {
-            computerScore++
-        }
-        if (computerchoice == "rock") {
-            playerScore++
-        }
-    }
-    else if (playerChoice == "scissors") {
-        if (computerchoice == "rock") {
-            computerScore++
-        }
-        if (computerchoice == "paper") {
-            playerScore++
-        }
-    }
-}
 
 function computerChoice() {
     options = ["rock", "paper", "scissors"];
@@ -69,11 +36,48 @@ function computerChoice() {
 }
 
 function PlayGame() {
-    let rounds = prompt("First to what?")
+    let numofrounds = prompt("First to what?");
+    rounds = numofrounds;
     playerScore = 0;
     computerScore = 0;
-    alert(`first to ${rounds} wins!`);
+    alert(`first to ${rounds} rounds wins!`);
 }
+
+function playRound(playerChoice) {
+    const computerchoice = computerChoice();
+    if (playerChoice == "Rock") {
+        if (computerchoice == "paper") {
+            computerScore++
+        }
+        if (computerchoice == "scissors") {
+            playerScore++
+        }
+    }
+    else if (playerChoice == "Paper") {
+        if (computerchoice == "scissors") {
+            computerScore++
+        }
+        if (computerchoice == "rock") {
+            playerScore++
+        }
+    }
+    else if (playerChoice == "Scissors") {
+        if (computerchoice == "rock") {
+            computerScore++
+        }
+        if (computerchoice == "paper") {
+            playerScore++
+        }
+    }
+    scoreBoard.textContent = `${playerScore} - ${computerScore}`;
+    if (playerScore == rounds) {
+        alert(`You win!!! The final score was ${playerScore} - ${computerScore}!`);
+    }
+    else if (computerScore == rounds) {
+        alert(`You lose! The final score was ${playerScore} - ${computerScore}!`);
+    }
+}
+
 
 
 
