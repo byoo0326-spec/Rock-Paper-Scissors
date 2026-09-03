@@ -24,27 +24,29 @@ const SelectPaper = Paper.addEventListener("click", (event) => {
 const SelectScissors = Scissors.addEventListener("click", (event) => {
     playRound(event.currentTarget.id);
 });
-8
+
 let rounds = 0;
 let playerScore = 0;
 let computerScore = 0;
 
 function computerChoice() {
-    options = ["rock", "paper", "scissors"];
+    const options = ["rock", "paper", "scissors"];
     let option = Math.floor(Math.random() * 3);
     return options[option];
 }
 
 function PlayGame() {
-    let numofrounds = prompt("First to what?");
+    scoreBoard.textContent = "0 - 0";
+    let numofrounds = Number(prompt("First to what?"));
     rounds = numofrounds;
-    playerScore = 0;
-    computerScore = 0;
     alert(`first to ${rounds} rounds wins!`);
 }
 
 function playRound(playerChoice) {
     const computerchoice = computerChoice();
+    if (rounds == 0) {
+        return;
+    }
     if (playerChoice == "Rock") {
         if (computerchoice == "paper") {
             computerScore++
@@ -72,9 +74,13 @@ function playRound(playerChoice) {
     scoreBoard.textContent = `${playerScore} - ${computerScore}`;
     if (playerScore == rounds) {
         alert(`You win!!! The final score was ${playerScore} - ${computerScore}!`);
+        playerScore = 0;
+        computerScore = 0;
     }
     else if (computerScore == rounds) {
         alert(`You lose! The final score was ${playerScore} - ${computerScore}!`);
+        playerScore = 0;
+        computerScore = 0;
     }
 }
 
